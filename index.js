@@ -1,33 +1,74 @@
-var canvas = document.getElementById("animation-box");
-var ctx = canvas.getContext('2d');
+const canvas = document.getElementById("animation-box");
+const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-var letters = "ABCDEFGHIJKLMNOPQRSTUVXYZ=*+-<>ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ日¦｜モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウ セ¦:꞊ミラリ╌ツテニハソ▪—<>0|+*コシマムメ";
+//モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウセ¦:꞊ミラリ╌ツテニハソ▪—<>0|+*コシマムメ
+
+let letters = "モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウセ¦:꞊ミラリ╌ツテニハソ▪—<>0|+*コシマムメ";
 letters = letters.split("");
 
-var fontSize = 25;
-var columns = canvas.width / fontSize;
-
-var trails = [];
-for (var i = 0; i < columns; i++) {
+let columnWidth = 25;
+let columns = canvas.width / 25;
+let trails = [];
+for (let i = 0; i < columns; i++) {
     trails[i] = 1;
-};
+}
 
 function draw() {
+    //makes trail fade
+    ctx.shadowBlur = 0;
     ctx.fillStyle = "rgba(0,0,0,0.1)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < trails.length; i++) {
-        var text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.font = "900 25px Matrix";
-        ctx.fillStyle = "#00ff2b";
-        ctx.fillText(text, i * fontSize, trails[i] * fontSize);
+
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < columns; i++) {
+        let text = letters[Math.floor(Math.random() * letters.length)];
+
+        //constant text settings
+        ctx.textAlign = "center";
+        ctx.font = "25px Matrix";
+
+        ctx.clearRect((i * 25) - 12.5, (trails[i] * 25) - 20, 25, 25);
+        ctx.fillStyle = "red";
+        ctx.fillText(text, i * 25, trails[i] * 25);
+
         trails[i]++;
-        if (trails[i] * fontSize > canvas.height && Math.random() > .95) {
+
+        //&& Math.random() > 0.95
+        //random spawns at when trails reaches bottom of page
+        if (trails[i] * columnWidth > canvas.height && Math.random() > 0.95) {
+            // let text2 = letters[Math.floor(Math.random() * letters.length)];
+            // let text3 = letters[Math.floor(Math.random() * letters.length)];
+
+            //random indices
+            // randomIndX = Math.floor(Math.random() * columns);
+            // randomIndX2 = Math.floor(Math.random() * columns);
+            // while (randomIndX2 == randomIndX) {
+            //     randomIndX2 = Math.floor(Math.random() * columns);
+            // }
+            // randomIndY = Math.floor(Math.random() * columns);
+            // randomIndY2 = Math.floor(Math.random() * columns);
+            // while (randomIndY2 == randomIndY) {
+            //     randomIndY2 = Math.floor(Math.random() * columns);
+            // }
+
+            //first random cluster
+            // ctx.clearRect(((randomIndX * 25) - 12.5), ((trails[randomIndX]-randomIndY) * 25) - 20, 25, 25);
+            // ctx.fillStyle = "purple";
+            // ctx.fillText(text2, randomIndX * 25, (trails[randomIndX]-randomIndY) * 25);
+
+            //second random cluster
+            // ctx.clearRect(((randomIndX2 * 25) - 12.5), ((trails[randomIndX2]-randomIndY2) * 25) - 20, 25, 25);
+            // ctx.fillStyle = "blue";
+            // ctx.fillText(text3, randomIndX2 * 25, (trails[randomIndX2]-randomIndY2) * 25);
+
+            // reset y coordinates back to 0 (top of page)
             trails[i] = 0;
         }
     }
 };
 
-setInterval(draw, 35);
+setInterval(draw, 30);
