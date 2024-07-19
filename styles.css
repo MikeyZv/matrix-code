@@ -60,7 +60,7 @@ body {
     font-size: 85px;
     font-family: Matrix;
     text-align: center;
-    color: white;
+    color: red;
     background-color: none;
     width: 100%;
     writing-mode: vertical-rl;
@@ -69,55 +69,167 @@ body {
 }
 
 .column-text:hover {
-    font-family: Matrix;
-    color: red;
+    color: white;
 }
 
 /* github text transition */
 #github:after {
     content: "github";
+    text-shadow: red 0 0 7px;
 }
  
 #github:hover:after {
     content: "GITHUB";
+    text-shadow: white 0 0 7px;
 }
  
 /* projects text transition */
 #projects:after {
     content: "projects";
+    text-shadow: red 0 0 7px;
 }
  
 #projects:hover:after {
     content: "PROJECTS";
-}
-
-/* about-me text transition */
-#about-me:after {
-    content: "about me";
-}
- 
-#about-me:hover:after {
-    content: "ABOUT ME";
+    text-shadow: white 0 0 7px;
 }
 
 /* linkedin text transition */
 #linkedin:after {
     content: "linkedin";
+    text-shadow: red 0 0 7px;
 }
  
 #linkedin:hover:after {
     content: "LINKEDIN";
+    text-shadow: white 0 0 7px;
 }
 
 /* e-mail text transition */
 #e-mail:after {
     content: "e-mail";
+    text-shadow: red 0 0 7px;
 }
  
 #e-mail:hover:after {
-    content: "E-MAIL";
+    content: "E_MAIL";
+    text-shadow: white 0 0 7px;
 }
 
 a {
     text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    #github:after{
+        animation: changeText-github 6.5s linear infinite;
+    }
+
+    @keyframes changeText-github {
+        0% {
+          content: "github";
+          text-shadow: red 0 0 7px;
+        }
+        25% {
+          color: black;
+          text-shadow: black 0 0 7px;
+        }
+        50% {
+          content: "GITHUB";
+          color: white;
+          text-shadow: white 0 0 7px;
+        }
+        75% {
+            color: black;
+            text-shadow: black 0 0 7px;
+        }
+        100% {
+            content: "github";
+            text-shadow: red 0 0 7px;
+        }
+    }
+
+    #projects:after{
+        animation: changeText-projects 4.5s linear infinite;
+    }
+
+    @keyframes changeText-projects {
+        0% {
+          content: "projects";
+          text-shadow: red 0 0 7px;
+        }
+        25% {
+          color: black;
+          text-shadow: black 0 0 7px;
+        }
+        50% {
+          content: "PROJECTS";
+          color: white;
+          text-shadow: white 0 0 7px;
+        }
+        75% {
+            color: black;
+            text-shadow: black 0 0 7px;
+        }
+        100% {
+            content: "projects";
+            text-shadow: red 0 0 7px;
+        }
+    }
+
+    #linkedin:after{
+        animation: changeText-linkedin 6s linear infinite;
+    }
+
+    @keyframes changeText-linkedin {
+        0% {
+          content: "linkedin";
+          text-shadow: red 0 0 7px;
+        }
+        25% {
+          color: black;
+          text-shadow: black 0 0 7px;
+        }
+        50% {
+          content: "LINKEDIN";
+          color: white;
+          text-shadow: white 0 0 7px;
+        }
+        75% {
+            color: black;
+            text-shadow: black 0 0 7px;
+        }
+        100% {
+            content: "linkedin";
+            text-shadow: red 0 0 7px;
+        }
+    }
+
+    #e-mail:after{
+        animation: changeText-email 8s linear infinite;
+    }
+
+    @keyframes changeText-email {
+        0% {
+          content: "e-mail";
+          text-shadow: red 0 0 7px;
+        }
+        25% {
+          color: black;
+          text-shadow: black 0 0 7px;
+        }
+        50% {
+          content: "E_MAIL";
+          color: white;
+          text-shadow: white 0 0 7px;
+        }
+        75% {
+            color: black;
+            text-shadow: black 0 0 7px;
+        }
+        100% {
+            content: "e-mail";
+            text-shadow: red 0 0 7px;
+        }
+    }
 }

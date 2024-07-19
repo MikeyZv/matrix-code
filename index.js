@@ -4,9 +4,9 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-//モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウセ¦:꞊ミラリ╌ツテニハソ▪—<>0|+*コシマムメ
+//モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウセ¦:꞊ミラリ╌ツテニハソ—<>0|+*コシマムメ
 
-let letters = "モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウセ¦:꞊ミラリ╌ツテニハソ▪—<>0|+*コシマムメ";
+let letters = "モエヤキオカ7ケサスz152ヨタワ4ネヌナ98ヒ0ホア3ウセ¦:꞊ミラリ╌ツテニハソ—<>0|+*コシマムメ";
 letters = letters.split("");
 
 let columnWidth = 25;
@@ -40,30 +40,30 @@ function draw() {
         //&& Math.random() > 0.95
         //random spawns at when trails reaches bottom of page
         if (trails[i] * columnWidth > canvas.height && Math.random() > 0.95) {
-            // let text2 = letters[Math.floor(Math.random() * letters.length)];
-            // let text3 = letters[Math.floor(Math.random() * letters.length)];
+            let text2 = letters[Math.floor(Math.random() * letters.length)];
+            let text3 = letters[Math.floor(Math.random() * letters.length)];
 
             //random indices
-            // randomIndX = Math.floor(Math.random() * columns);
-            // randomIndX2 = Math.floor(Math.random() * columns);
-            // while (randomIndX2 == randomIndX) {
-            //     randomIndX2 = Math.floor(Math.random() * columns);
-            // }
-            // randomIndY = Math.floor(Math.random() * columns);
-            // randomIndY2 = Math.floor(Math.random() * columns);
-            // while (randomIndY2 == randomIndY) {
-            //     randomIndY2 = Math.floor(Math.random() * columns);
-            // }
+            randomIndX = Math.floor(Math.random() * columns);
+            randomIndX2 = Math.floor(Math.random() * columns);
+            while (randomIndX2 == randomIndX) {
+                randomIndX2 = Math.floor(Math.random() * columns);
+            }
+            randomIndY = Math.floor(Math.random() * columns);
+            randomIndY2 = Math.floor(Math.random() * columns);
+            while (randomIndY2 == randomIndY) {
+                randomIndY2 = Math.floor(Math.random() * columns);
+            }
 
-            //first random cluster
-            // ctx.clearRect(((randomIndX * 25) - 12.5), ((trails[randomIndX]-randomIndY) * 25) - 20, 25, 25);
-            // ctx.fillStyle = "purple";
-            // ctx.fillText(text2, randomIndX * 25, (trails[randomIndX]-randomIndY) * 25);
+            // first random cluster
+            ctx.clearRect(((randomIndX * 25) - 12.5), ((trails[randomIndX]-randomIndY) * 25) - 20, 25, 25);
+            ctx.fillStyle = "red";
+            ctx.fillText(text2, randomIndX * 25, (trails[randomIndX]-randomIndY) * 25);
 
             //second random cluster
-            // ctx.clearRect(((randomIndX2 * 25) - 12.5), ((trails[randomIndX2]-randomIndY2) * 25) - 20, 25, 25);
-            // ctx.fillStyle = "blue";
-            // ctx.fillText(text3, randomIndX2 * 25, (trails[randomIndX2]-randomIndY2) * 25);
+            ctx.clearRect(((randomIndX2 * 25) - 12.5), ((trails[randomIndX2]-randomIndY2) * 25) - 20, 25, 25);
+            ctx.fillStyle = "red";
+            ctx.fillText(text3, randomIndX2 * 25, (trails[randomIndX2]-randomIndY2) * 25);
 
             // reset y coordinates back to 0 (top of page)
             trails[i] = 0;
